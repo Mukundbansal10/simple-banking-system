@@ -34,7 +34,7 @@ public class BankAccount {
             Thread.sleep(700);
 
             accountHolderName = newCustName;
-            newAccountNumber = 356836; // Assuming a method to generate account number
+            newAccountNumber = 247836;
             double balance = 0.0;
             BankOperations bankOperations = new BankOperations(balance);
             updatedBalance = bankOperations.setOldBalance(balance);
@@ -56,6 +56,10 @@ public class BankAccount {
 
         public double getBalance() {
             return updatedBalance;
+        }
+
+        public void updateBalance(double newBalance) {
+            updatedBalance = newBalance;
         }
     }
 

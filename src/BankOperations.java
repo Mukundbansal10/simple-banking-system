@@ -2,10 +2,12 @@ import java.util.Scanner;
 
 public class BankOperations {
     private double oldBalance;
+    private NewCustomer newCustomer;
     Scanner in = new Scanner(System.in);
 
     public BankOperations(double oldBalance) {
         this.oldBalance = oldBalance;
+        this.newCustomer = new NewCustomer();
     }
 
     public void greeting() throws InterruptedException {
@@ -32,6 +34,7 @@ public class BankOperations {
                         break;
                     case 3:
 //                        checkbalanece
+                        checkBalance();
                         break;
                     case 4:
                         System.out.println("Thank you for joining with us !");
@@ -51,9 +54,8 @@ public class BankOperations {
         double depositAmount = in.nextDouble();
         NewCustomer newCustomer = new NewCustomer();
          oldBalance = newCustomer.getBalance();
-        if(oldBalance>=0){
             oldBalance+=depositAmount;
-        }
+            newCustomer.updateBalance(oldBalance);
         System.out.println("your Current balance is => "+ oldBalance);
     }
     public void withdrawMoney(){
@@ -62,14 +64,22 @@ public class BankOperations {
         double withdrawnAmount = in.nextDouble();
         NewCustomer newCustomer = new NewCustomer();
         oldBalance = newCustomer.getBalance();
-        if (oldBalance>=0){
+        if (oldBalance>=withdrawnAmount){
             oldBalance-=withdrawnAmount;
+            newCustomer.updateBalance(oldBalance);
+        }else {
+            System.out.println("Enter amount less than your current balance !");
         }
         System.out.println("your current balance is => "+oldBalance);
     }
 
     public double setOldBalance(double oldBalance) {
         this.oldBalance = oldBalance;
+        newCustomer.updateBalance(oldBalance);
         return oldBalance;
+    }
+
+    public void checkBalance(){
+        System.out.println("your Current balance is => "+oldBalance);
     }
 }

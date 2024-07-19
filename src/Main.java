@@ -5,8 +5,6 @@ public class Main {
     public static void main(String[] args) throws InterruptedException {
 
         Scanner in = new Scanner(System.in);
-//        int i = 2;
-//        while (i>0){
         System.out.println("Welcome to Reserve Bank of india !");
         Thread.sleep(1500);
         System.out.println("are u a existing customer PRESS 1 !!");
@@ -25,7 +23,6 @@ public class Main {
                     System.out.println(" ");
                     BankAccount bankAccount = new BankAccount();
                     bankAccount.ExistingCustomer(existCustAcNumber,accountHolderName);
-//                    System.out.println("okk");
                     break;
                 case 2:
                     System.out.println("Create your Account !");
@@ -33,15 +30,15 @@ public class Main {
                     System.out.print("Enter your Name => ");
                     String newCustomerName = in.next();
                     System.out.println(" ");
-                    new NewCustomer().NewAccount(newCustomerName);
-//                    System.out.println("hii");
+
+                    NewCustomer newCustomer = new NewCustomer();
+                    newCustomer.NewAccount(newCustomerName);
+                    BankOperations bankOperations = new BankOperations(newCustomer.getBalance());
+                    bankOperations.greeting();
                     break;
-//                default:
-//                    System.out.println("Process Terminated due to wrong Selection");
             }
         }else {
             System.out.println("Process Terminated due to wrong Selection");
-//        }i--;
         }
     }
 }
