@@ -5,14 +5,14 @@ public class Main {
     public static void main(String[] args) throws InterruptedException {
 
         Scanner in = new Scanner(System.in);
-        int i = 2;
-        while (i>0){
+//        int i = 2;
+//        while (i>0){
         System.out.println("Welcome to Reserve Bank of india !");
         Thread.sleep(1500);
         System.out.println("are u a existing customer PRESS 1 !!");
         System.out.println("or a New Customer PRESS 2 !");
         Thread.sleep(1000);
-        System.out.print("press 1 or 2 to proceed further !");
+        System.out.print("press 1 or 2 to proceed further => ");
         int customerExistence = in.nextInt();
         if (customerExistence == 1 || customerExistence == 2) {
             switch (customerExistence){
@@ -41,7 +41,7 @@ public class Main {
             }
         }else {
             System.out.println("Process Terminated due to wrong Selection");
-        }i--;
+//        }i--;
         }
     }
 }

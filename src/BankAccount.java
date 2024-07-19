@@ -27,7 +27,7 @@ public class BankAccount {
     class NewCustomer {
         private static String accountHolderName;
         private static long newAccountNumber;
-        private static double balance;
+        private static double updatedBalance;
 
         public void NewAccount(String newCustName) throws InterruptedException {
             System.out.println("Congratulations your account successfully created !");
@@ -35,13 +35,15 @@ public class BankAccount {
 
             accountHolderName = newCustName;
             newAccountNumber = 356836; // Assuming a method to generate account number
-            balance = 0.0;
+            BankOperations bankOperations = new BankOperations();
+            double balance = 0.0;
+            updatedBalance = bankOperations.setOldBalance(balance);
             System.out.println("your Account details are as follows :");
             Thread.sleep(300);
             System.out.println("Account holder name =>"+ newCustName);
             System.out.println("Account number => "+ newAccountNumber);
             System.out.println("Account balance => "+ balance);
-            BankOperations bankOperations = new BankOperations();
+            bankOperations.greeting();
         }
 
         public String getAccountHolderName() {
@@ -53,7 +55,7 @@ public class BankAccount {
         }
 
         public double getBalance() {
-            return balance;
+            return updatedBalance;
         }
     }
 
