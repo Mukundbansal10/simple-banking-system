@@ -35,8 +35,8 @@ public class BankAccount {
 
             accountHolderName = newCustName;
             newAccountNumber = 356836; // Assuming a method to generate account number
-            BankOperations bankOperations = new BankOperations();
             double balance = 0.0;
+            BankOperations bankOperations = new BankOperations(balance);
             updatedBalance = bankOperations.setOldBalance(balance);
             System.out.println("your Account details are as follows :");
             Thread.sleep(300);

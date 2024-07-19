@@ -3,6 +3,11 @@ import java.util.Scanner;
 public class BankOperations {
     private double oldBalance;
     Scanner in = new Scanner(System.in);
+
+    public BankOperations(double oldBalance) {
+        this.oldBalance = oldBalance;
+    }
+
     public void greeting() throws InterruptedException {
 
         boolean exit = false;
@@ -49,9 +54,18 @@ public class BankOperations {
         if(oldBalance>=0){
             oldBalance+=depositAmount;
         }
+        System.out.println("your Current balance is => "+ oldBalance);
     }
     public void withdrawMoney(){
-
+        System.out.println("How much money you want to withdraw !");
+        System.out.println("Enter the amount in rupees => ");
+        double withdrawnAmount = in.nextDouble();
+        NewCustomer newCustomer = new NewCustomer();
+        oldBalance = newCustomer.getBalance();
+        if (oldBalance>=0){
+            oldBalance-=withdrawnAmount;
+        }
+        System.out.println("your current balance is => "+oldBalance);
     }
 
     public double setOldBalance(double oldBalance) {
