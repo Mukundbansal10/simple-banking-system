@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class BankOperations {
     private double oldBalance;
-    private NewCustomer newCustomer;
+    private final NewCustomer newCustomer;
     Scanner in = new Scanner(System.in);
 
     public BankOperations(double oldBalance) {
@@ -21,29 +21,28 @@ public class BankOperations {
             System.out.println("Withdraw money PRESS 2 !");
             System.out.println("Check balance PRESS 3 !");
             System.out.println("For Exit PRESS 4 !");
-            int custChoice = in.nextInt();
-            if (custChoice == 1 || custChoice == 2 || custChoice == 3 || custChoice == 4) {
-                switch (custChoice) {
+            int customerChoice = in.nextInt();
+            if (customerChoice == 1 || customerChoice == 2 || customerChoice == 3 || customerChoice == 4) {
+                switch (customerChoice) {
                     case 1:
-//                        deposit
                         depositMoney();
                         break;
                     case 2:
-//                        withdraw
                         withdrawMoney();
                         break;
                     case 3:
-//                        checkbalanece
                         checkBalance();
                         break;
                     case 4:
                         System.out.println("Thank you for joining with us !");
                         System.out.println("Have a nice day !");
                         exit = true;
+                        break;
+                    default:
+                        System.out.println("Process is being terminated due to wrong selection!");
+                        exit = true;
+                        break;
                 }
-            }else {
-                System.out.println("Process is being terminated due to wrong selection !");
-                exit=true;
             }
 
         }
@@ -82,4 +81,11 @@ public class BankOperations {
     public void checkBalance(){
         System.out.println("your Current balance is => "+oldBalance);
     }
+
+    public static void main(String[] args) throws InterruptedException {
+        double balance = 3;
+        BankOperations bankOperations = new BankOperations(balance);
+        bankOperations.greeting();
+    }
+
 }

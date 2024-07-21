@@ -13,12 +13,14 @@ public class BankAccount {
 //        this.accountHolder = accountHolder;
 //    }
 
-    public void ExistingCustomer(long existCustAcNumber , String accountHolder){
+    public void ExistingCustomer(long existCustAcNumber , String accountHolder) throws InterruptedException {
         NewCustomer newCustomer = new NewCustomer();
         String oldCustName = newCustomer.getAccountHolderName();
         long oldAcNumber = newCustomer.getNewAccountNumber();
         if(existCustAcNumber==oldAcNumber && accountHolder.equals(oldCustName)){
             System.out.println("details matched !");
+            BankOperations bankOperations = new BankOperations(newCustomer.getBalance());
+            bankOperations.greeting();
         }else {
             System.out.println("user does not exist !");
         }
@@ -44,6 +46,7 @@ public class BankAccount {
             System.out.println("Account number => "+ newAccountNumber);
             System.out.println("Account balance => "+ balance);
             bankOperations.greeting();
+
         }
 
         public String getAccountHolderName() {
